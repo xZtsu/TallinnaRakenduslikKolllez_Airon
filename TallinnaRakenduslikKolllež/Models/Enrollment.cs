@@ -2,12 +2,12 @@
 {
     public enum Grade
     {
-        A = 1
-        B = 2
-        C = 3
-        D = 4
-        F = 5
-        X = 6
+        A = 1,
+        B = 2,
+        C = 3,
+        D = 4,
+        F = 5,
+        X = 6,
         MA = 7
     }
     public class Enrollment
@@ -17,6 +17,6 @@
         public int StudentID { get; set; }
         public Grade? CurrentGrade { get; set; }
         public Course Course { get; set; }
-        public Student
+        public Student Student { get; set; } 
     }
 }
