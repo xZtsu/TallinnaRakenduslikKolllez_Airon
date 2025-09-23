@@ -15,6 +15,7 @@
 			<th>Kabinet</th>
 			<th>Palk</th>
 			<th>Ruumi number</th>
+			<th>E-mail</th>
 			<th>Tööriistad</th>
 		</tr>
 	</thead>
@@ -26,11 +27,28 @@
 			{
 				selectedRow = "table-success";
 			}
-			<tr> class="@selectedRow">
+			<tr class=@selectedRow>
 				<td>@Html.DisplayFor(ModelItem => instructor.LastName)</td>
 				<td>@Html.DisplayFor(ModelItem => instructor.FirstName)</td>
 				<td>@Html.DisplayFor(ModelItem => instructor.HiredDate)</td>
+				<td>
+					@if (instructor.OfficeAssignments != null)
+					{
+						@instructor.OfficeAssignments.Location
+					}
 
+				</td>
+
+				<td>@Html.DisplayFor(ModelItem => instructor.Salary)</td>
+				<td>@Html.DisplayFor(ModelItem => instructor.RoomID)</td>
+				<td>@Html.DisplayFor(ModelItem => instructor.Email)</td>
+				
+				<td>
+                    <a asp-action="Delete" asp-route-id="@instructor.ID">Kustuta</a>
+					<a asp-action="Edit" asp-route-id="@instructor.ID">Edit</a>
+					<a asp-action="Details" asp-route-id="@instructor.ID">Details</a>
+
+				</td>	
 			</tr>
 		}
 	</tbody>

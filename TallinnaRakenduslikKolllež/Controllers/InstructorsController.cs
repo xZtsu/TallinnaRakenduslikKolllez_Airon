@@ -84,7 +84,7 @@ namespace TallinnaRakenduslikKolllež.Controllers
             return View(deletableInstructor);
         }
 
-        [HttpDelete,ActionName("Delete")]
+        [HttpPost,ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -107,14 +107,55 @@ namespace TallinnaRakenduslikKolllež.Controllers
             {
                 vm.Add(new AssignedCourseData
                 {
-                    CourseId = course.CourseID,
+                    CourseID = course.CourseID,
                     Title = course.Title,
                     Assigned = instructorCourses.Contains(course.CourseID)
                 });
             }
             ViewData["Courses"] = vm;
         }
-        
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var instructor = await _context.Instructors.FirstOrDefaultAsync(x => x.ID == id);
+            if (instructor == null)
+            {
+                return NotFound();
+            }
+            return View(instructor);
+        }
 
+        [HttpGet, ActionName("Edit")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var instructor = await _context.Instructors.FirstOrDefaultAsync(x => x.ID == id);
+            if (instructor == null)
+            {
+                return NotFound();
+            }
+            return View(instructor);
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditConfirmed([Bind("ID,LastName,FirstName,HiredDate,OfficeAssignment,Salary,RoomId,Email,")] Instructor instructor)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Instructors.Update(instructor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
     }
+
 }
