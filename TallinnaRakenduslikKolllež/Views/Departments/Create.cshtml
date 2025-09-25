@@ -3,7 +3,19 @@
 @{
 	ViewData["Title"] = "Osakond";
 }
-<h2>Asuta uus osakond</h2>
+@if (ViewBag.action == "Create")
+{
+	<P>
+		<h3>Loo osakond:</h3>
+	</P>
+}
+else if (ViewBag.action == "Edit")
+{
+	<p>
+		<h3>Muuda osakonda</h3>
+	</p>
+}
+
 <hr/>
 <div class="row">
 	<div class="col-md-8">
@@ -48,13 +60,20 @@
 				<input asp-for="IsDeleted" class="control-label" />
 				<span asp-validation-for="IsDeleted" class="text-danger"></span>
 			</div>
-
+			@if (ViewBag.action == "Create")
+			{
 			<div class="form-group">
 				<input type="submit" value="Create" class="btn btn-primary"/> | <a asp-action="Index"
 					class="btn btn-danger">Tühista Loomine</a>
 			</div>
-			
-
+			}
+			else if (ViewBag.action == "Edit")
+			{
+			<div class="form-group">
+					<input type="submit" value="Sisesta" class="btn btn-primary" /> | 	<a asp-action="Index"
+					class="btn btn-danger">Tühista Muutmine</a>
+			</div>
+			}
 
 		</form>
 	</div>
