@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TallinnaRakenduslikKolllež.Data;
 
@@ -17,6 +18,20 @@ namespace TallinnaRakenduslikKolllež.Controllers
             var courses = _context.Courses.Include(c => c.Department)
                 .AsNoTracking();
             return View(courses);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            PopulateDepartmentsDropDownList();
+            return View();
+        }
+
+        private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
+        {
+            var departmentsQuery = from d in _context.Departments
+                                   orderby d.Name
+                                   select ;
+            ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
         }
     }
 }
