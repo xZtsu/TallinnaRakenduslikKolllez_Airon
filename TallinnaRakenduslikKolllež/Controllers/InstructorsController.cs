@@ -45,10 +45,10 @@ namespace TallinnaRakenduslikKolllež.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Instructor instructor, string selectedCourses)
         {
-            if (selectedCourses == null)
+            if (selectedCourses != null)
             {
                 instructor.CourseAssignments = new List<CourseAssignment>();
-                foreach (var course in selectedCourses)
+                foreach (var course in selectedCourses) 
                 {
                     var courseToAdd = new CourseAssignment
                     {

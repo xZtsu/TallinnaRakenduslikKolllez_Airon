@@ -56,44 +56,45 @@
 
 			<div class="form-group">
 				<div class="col-mdoffset-2 col-md-10">
-					<table>
-						<tr>
-							@{
-								int count = 0;
-								List<TallinnaRakenduslikKolllež.Models.AssignedCourseData> assignedCourses = ViewBag.Courses;
+						<table>
+								<tr>
+									@{
+										int count = 0;
+										List<TallinnaRakenduslikKolllež.Models.AssignedCourseData> assignedCourses = ViewBag.Courses;
 								
-								if (assignedCourses != null)
-								{
-								foreach (var course in assignedCourses)
-								{
-									if (count++ % 3 == 0)
+										if (assignedCourses != null)
+										{
+											foreach (var course in assignedCourses)
+											{
+												if (count++ % 3 == 0)
+												{
+													@:</tr><tr>
+												}
+												@:<td>
+												<input
+												type="checkbox"
+												name="selectedCourses"
+												value="@course.CourseID"
+												@(Html.Raw(course.Assigned ? "checked=\"checked\"":""))
+												/>
+											}
+										}
+									else
 									{
-										@:</tr><tr>
+										@: Kursuseid ei Leitud
 									}
-									@:<td>
-									<input
-									type="checkbox"
-									name="selectedCourses"
-									value="@course.CourseID"
-									@(Html.Raw(course.Assigned ? "checked=\"checked\"":""))
-									/>
-								}
-							}
-							else
-							{
-								@: Kursuseid ei Leitud
-							}
-							}
+									}
 
-						</tr>
-					</table>
-				<div>
-					<input type="submit" value="Sisesta" class="btn btn-primary"/>
+								</tr>
+						</table>
+						<div>
+							<input type="submit" value="Sisesta" class="btn btn-primary"/>
+						</div>
+						<div>
+							<a asp-action="Index" class="btn btn-danger">Tühista lisamine</a>
+						</div>
 				</div>
-				<div>
-					<a asp-action="Index" class="btn btn-danger">Tühista lisamine</a>
-				</div>
-
+			</div>
 
 
 
@@ -106,7 +107,6 @@
 		</form>
 	</div>
 </div>
-
 
 
 
