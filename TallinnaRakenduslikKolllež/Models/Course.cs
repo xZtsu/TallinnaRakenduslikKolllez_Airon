@@ -11,3 +11,4 @@
         public ICollection<CourseAssignment> CourseAssignments { get; set; }
     }
 }
+
