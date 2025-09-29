@@ -27,9 +27,9 @@ namespace TallinnaRakenduslikKolllež.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DepartmentID, Name, Budget, StartDate,RowVersion, Administrator, PhoneNumber, EndDate, IsDeleted ")] Department departments)
+        public async Task<IActionResult> Create([Bind("DepartmentID, Name, Budget, StartDate,Administrator ,RowVersion, PhoneNumber, EndDate, IsDeleted ")] Department departments)
         {
-            ViewData["action"] = "Delete";
+            ViewData["action"] = "Create";
             if (ModelState.IsValid)
             {
                 _context.Departments.Add(departments);
