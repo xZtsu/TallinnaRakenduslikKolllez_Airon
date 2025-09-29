@@ -30,7 +30,7 @@ namespace TallinnaRakenduslikKolllež.Controllers
         {
             var departmentsQuery = from d in _context.Departments
                                    orderby d.Name
-                                   select ;
+                                   select d;
             ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
         }
     }
