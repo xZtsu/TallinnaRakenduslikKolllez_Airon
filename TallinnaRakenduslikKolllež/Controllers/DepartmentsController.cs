@@ -94,12 +94,12 @@ namespace TallinnaRakenduslikKolllež.Controllers
             {
                 return NotFound();
             }
-            return View(department);
+            return View(nameof(Create), department);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditConfirmed([Bind("ID,LastName,FirstName,HiredDate,OfficeAssignment,Salary,RoomId,Email,")] Department department)
+        public async Task<IActionResult> EditConfirmed([Bind("DepartmentID, Name, Budget, StartDate,Administrator ,RowVersion, PhoneNumber, EndDate, IsDeleted ")] Department department)
         {
             ViewData["action"] = "Edit";
             if (ModelState.IsValid)
