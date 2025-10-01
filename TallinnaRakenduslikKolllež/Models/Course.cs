@@ -1,7 +1,10 @@
-﻿namespace TallinnaRakenduslikKolllež.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TallinnaRakenduslikKolllež.Models
 {
     public class Course
     {
+        [Key]
         public int CourseID { get; set; }
         public string Title { get; set; }
         public int Credits { get; set; }
