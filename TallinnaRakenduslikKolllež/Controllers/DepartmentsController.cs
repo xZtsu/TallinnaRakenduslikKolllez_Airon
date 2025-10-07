@@ -20,14 +20,14 @@ namespace TallinnaRakenduslikKolllež.Controllers
             return View(await schoolContext.ToListAsync());
         }
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             ViewData["action"] = "Create";
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DepartmentID, Name, Budget, StartDate,Administrator ,RowVersion, PhoneNumber, EndDate, IsDeleted ")] Department departments)
+        public async Task<IActionResult> Create([Bind(" Name, Budget, StartDate,Administrator ,RowVersion, PhoneNumber, EndDate, IsDeleted ")] Department departments)
         {
             ViewData["action"] = "Create";
             if (ModelState.IsValid)

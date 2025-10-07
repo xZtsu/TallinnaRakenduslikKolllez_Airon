@@ -15,8 +15,8 @@ namespace TallinnaRakenduslikKolllež.Models
         public byte? RowVersion { get; set; }
 
         /** 3 oma omadust**/
-        public string PhoneNumber { get; set; }
-        public DateTime EndDate { get; set; }
-        public bool IsDeleted { get; set; }
+        public string? PhoneNumber { get; set; }
+        public DateTime? EndDate { get; set; }
+        public bool? IsDeleted { get; set; }
     }
 }

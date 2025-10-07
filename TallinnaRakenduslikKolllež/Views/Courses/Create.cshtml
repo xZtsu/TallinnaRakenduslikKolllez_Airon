@@ -2,6 +2,8 @@
 @{
 	ViewData["Title"] = "Uus kursus";
 }
+@if (ViewBag.action == "Create")
+{
 <h1>Tee uus kursus</h1>
 <h4>Sisesta info:</h4>
 <hr/>
@@ -9,19 +11,19 @@
 	<div class="col-md-4">
 		<form asp-action="Create">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<div>
+			@*<div>
 				<label asp-for="CourseID" class="control-label"></label>
-				<input asp-for="CourseID" class="form-control"></input>
+				<input asp-for="CourseID" class="form-control">
 				<span asp-validation-for="CourseID" class="text-danger"></span>
-			</div>
+			</div>**@
 			<div>
 				<label asp-for="Title" class="control-label"></label>
-				<input asp-for="Title" class="form-control"></input>
+				<input asp-for="Title" class="form-control">
 				<span asp-validation-for="Title" class="text-danger"></span>
 			</div>
 			<div>
 				<label asp-for="Credits" class="control-label"></label>
-				<input asp-for="Credits" class="form-control"></input>
+				<input asp-for="Credits" class="form-control">
 				<span asp-validation-for="Credits" class="text-danger"></span>
 			</div>
 			<div>
@@ -38,3 +40,4 @@
 		</form>
 	</div>
 </div>
+}
