@@ -99,7 +99,7 @@ namespace TallinnaRakenduslikKolllež.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditConfirmed([Bind("DepartmentID, Name, Budget, StartDate,Administrator ,RowVersion, PhoneNumber, EndDate, IsDeleted ")] Department department)
+        public async Task<IActionResult> EditConfirmed([Bind("DepartmentID, Name, Budget, StartDate,Administrator ,RowVersion, PhoneNumber, EndDate, IsDeleted")] Department department)
         {
             ViewData["action"] = "Edit";
             if (ModelState.IsValid)

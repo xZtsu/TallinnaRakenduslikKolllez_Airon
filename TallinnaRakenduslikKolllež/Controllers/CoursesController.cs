@@ -42,13 +42,7 @@ namespace TallinnaRakenduslikKolllež.Controllers
             }
             return View(courses);
         }
-        private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
-        {
-            var departmentsQuery = from d in _context.Departments
-                                   orderby d.Name
-                                   select d;
-            ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
-        }
+ 
         [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -95,5 +89,51 @@ namespace TallinnaRakenduslikKolllež.Controllers
             ViewBag.action = "Details";
             return View("Delete", courses);
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            ViewData["action"] = "Edit";
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var courses = await _context.Courses.FirstOrDefaultAsync(r => r.CourseID == id);
+            if (courses == null)
+            {
+                return NotFound();
+            }
+                    {
+            PopulateDepartmentsDropDownList();
+            return View("Create", courses);
+
+        }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditConfirmed(int id, [Bind("CourseID,Title,Credits,DepartmentID,Department,Enrollments,CourseAssignments")] Course courses)
+        
+        {
+            ViewData["action"] = "EditConfirmed";
+            if (ModelState.IsValid)
+            {
+                _context.Courses.Update(courses);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+
+
+            return View(courses);
+
+
+        }
+        private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
+        {
+            var departmentsQuery = from d in _context.Departments
+                                   orderby d.Name
+                                   select d;
+            ViewBag.DepartmentID = new SelectList(departmentsQuery.AsNoTracking(), "DepartmentID", "Name", selectedDepartment);
+        }
+
     }
 }

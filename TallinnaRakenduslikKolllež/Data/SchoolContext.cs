@@ -15,6 +15,7 @@ namespace TallinnaRakenduslikKolllež.Data
             public DbSet<CourseAssignment> courseAssignments { get; set; }
             public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
             public DbSet<Department> Departments { get; set; }
+            public DbSet<Delinquent> Delinquents { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
             {
             modelBuilder.Entity<Course>().ToTable("Course");
@@ -24,6 +25,7 @@ namespace TallinnaRakenduslikKolllež.Data
             modelBuilder.Entity<CourseAssignment>().ToTable("CourseAssignment");
             modelBuilder.Entity<OfficeAssignment>().ToTable("OfficeAssignment");
             modelBuilder.Entity<Department>().ToTable("Department");
+            modelBuilder.Entity<Delinquent>().ToTable("Delinquent");
         }
         
     }
