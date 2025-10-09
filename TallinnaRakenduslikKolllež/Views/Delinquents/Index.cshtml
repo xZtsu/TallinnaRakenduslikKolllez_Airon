@@ -51,9 +51,9 @@
 					@Html.DisplayFor(modelItem => delinquent.Olukord)
 				</td>
 				<td>
-					<a asp-action="Edit" asp-route-id="@delinquent.DelinquentID">Muuda</a>
-					<a asp-action="Details" asp-route-id="@delinquent.DelinquentID">Vaata</a>
-					<a asp-action="Delete" asp-route-id="@delinquent.DelinquentID">Kustuta</a>
+					<a asp-action="Edit" asp-route-id="@delinquent.DelinquentID" class="btn btn-primary">Muuda</a>
+					<a asp-action="Details" asp-route-id="@delinquent.DelinquentID" class="btn btn-primary">Vaata</a>
+					<a asp-action="Delete" asp-route-id="@delinquent.DelinquentID" class="btn btn-danger">Kustuta</a>
 				</td>
 			</tr>
 		}

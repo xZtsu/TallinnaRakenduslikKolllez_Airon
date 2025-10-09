@@ -19,9 +19,11 @@
 				<input asp-for="LastName" class="form-control" />
 				<span asp-validation-for="LastName" class="text-danger"></span>
 			</div>
-			<div class="form-group">
+			<div>
 				<label asp-for="CurrentViolation" class="control-label"></label>
-				<input asp-for="CurrentViolation" class="form-control" />
+				<select asp-for="CurrentViolation" class="form-control" asp-items="ViewBag.CurrentViolation">
+					<option value="" class="form-control">-- Vali kuritegu--</option>
+				</select>
 				<span asp-validation-for="CurrentViolation" class="text-danger"></span>
 			</div>
 			<div class="form-group">

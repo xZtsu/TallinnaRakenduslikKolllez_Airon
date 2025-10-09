@@ -1,0 +1,30 @@
+﻿@model TallinnaRakenduslikKolllež.Models.Delinquent
+@{
+	ViewData["Title"] = "Delete";
+}
+<h1>Kustuta kurjategija</h1>
+<h3>Kas soovid kustutada kurjategija @Html.DisplayFor(model => model.FirstName +" "+ model.LastName)</h3>
+<div>
+	<h4>Õpetaja</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.DelinquentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.DelinquentID)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.FirstName)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.FirstName)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.LastName)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.LastName)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.CurrentViolation)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.CurrentViolation)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.OnOpetaja)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.OnOpetaja)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.Description)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.Description)</dt>
+		<dt class="col-sm-2">@Html.DisplayNameFor(model => model.Olukord)</dt>
+		<dt class="col-sm-2">@Html.DisplayFor(model => model.Olukord)</dt>
+	</dl>
+	<form asp-action="DeleteConfirmed">
+		<input type="hidden" asp-for="DelinquentID" />
+		<input type="submit" value="Kustuta" class="btn btn-danger" /> <a asp-action="Index">Tühista</a>
+	</form>
+</div>
