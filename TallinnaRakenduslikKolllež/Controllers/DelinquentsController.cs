@@ -45,7 +45,7 @@ namespace TallinnaRakenduslikKolllež.Controllers
                 return RedirectToAction("Index");
 
             }
-          
+
             ViewBag.CurrentViolation = new SelectList(Enum.GetValues(typeof(Violation))
                             .Cast<Violation>()
                             .Select(v => new SelectListItem
@@ -56,7 +56,7 @@ namespace TallinnaRakenduslikKolllež.Controllers
 
             return View(delinquent);
         }
-                [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -83,17 +83,65 @@ namespace TallinnaRakenduslikKolllež.Controllers
             {
                 return NotFound();
             }
-           
+
             return View(delinquent);
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var delinqueent = await _context.Delinquents.FindAsync(id);
-            _context.Delinquents.Remove(delinqueent);
+            var delinquent = await _context.Delinquents.FindAsync(id);
+            _context.Delinquents.Remove(delinquent);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var delinquent = await _context.Delinquents.FirstOrDefaultAsync(a => a.DelinquentID == id);
+            if (delinquent == null)
+            {
+                return NotFound();
+            }
+                ViewBag.CurrentViolation = new SelectList(Enum.GetValues(typeof(Violation))
+                .Cast<Violation>()
+                .Select(v => new SelectListItem
+                {
+                    Text = v.ToString(),
+                    Value = v.ToString()
+                }), "Value", "Text");
+            return View(delinquent);
+        }
+        [HttpPost, ActionName("EditConfirmed")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditConfirmed([Bind("DelinquentID,FirstName,LastName,CurrentViolation,OnOpetaja,Description,Olukord")] Delinquent delinquent)
+
+        {
+            if (ModelState.IsValid)
+            {
+
+                _context.Delinquents.Update(delinquent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+                // return RedirectToAction(nameof(Index))
+            }
+
+
+            return View(delinquent);
+        }
+
+
+
+
+
+
+
+
+
     }
 }

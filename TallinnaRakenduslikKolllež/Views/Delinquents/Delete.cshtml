@@ -1,10 +1,10 @@
 ﻿@model TallinnaRakenduslikKolllež.Models.Delinquent
-
 @{
-	ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
-<h3>Kas soovid kustutada kurjategija @Html.DisplayFor(model => model.FirstName +" "+ model.LastName)</h3>
+<h3>Kas soovid kustutada kurjategija @(Html.DisplayFor(model => model.FirstName)) @(Html.DisplayFor(model => model.LastName))</h3>
+
 <div>
 	<h4>Kurjategija</h4>
 	<hr />
@@ -38,7 +38,7 @@
         <dd class="col-sm-10"> @Html.DisplayFor(Model => Model.Olukord)</dd>
     </dl>
 
-	<form asp-action="DeleteConfirmed">
+	<form asp-action="Delete">
 		<input type="hidden" asp-for="DelinquentID" />
 		<input type="submit" value="Kustuta" class="btn btn-danger" /> <a asp-action="Index">Tühista</a>
 	</form>
