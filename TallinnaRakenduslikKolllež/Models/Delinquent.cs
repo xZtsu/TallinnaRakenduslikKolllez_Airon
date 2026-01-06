@@ -21,7 +21,7 @@ namespace TallinnaRakenduslikKolllež.Models
         public string LastName { get; set; }
         public Violation? CurrentViolation { get; set; }
         [Display(Name = "Kas on Õpetaja")]
-        public bool? OnOpetaja { get; set; }
+        public bool OnOpetaja { get; set; }
         [Display(Name = "Kirjeldus")]
         public string Description { get; set; }
         [Display(Name = "Olukord")]
